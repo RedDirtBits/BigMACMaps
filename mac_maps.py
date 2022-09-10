@@ -46,7 +46,8 @@ with open("port_maps.csv", "a") as csvfile:
                 
                 # If the mac address from the arp table is found in the mac address table and the interface is
                 # not a trunk port, we have found a match that needs to be captured
-                if arp_mac_address in mac_key and mac_table[tables.switch_hostname][mac_key]["interface"] not in excluded_ports:
+                if arp_mac_address in mac_key and mac_table[tables.switch_hostname][mac_key]["interface"] not in \
+                        excluded_ports:
                     
                     # Extract the values that show the mapping from the arp table to the switch port and
                     # write it to the CSV file.  Wash, Rinse, Repeat until done
