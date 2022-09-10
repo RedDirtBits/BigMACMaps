@@ -44,7 +44,6 @@ class GetTables:
         self.cmds = CiscoCommands()
         self.regexes = IOSRexPatterns()
 
-
     def parse_arp_table(self, ip_addr: str):
         """
         parse_arp_table summary:
@@ -52,7 +51,7 @@ class GetTables:
             show ip arp and parsing the results
 
         Args:
-            router_ip (str): The hostname or IP address of the router/core switch
+            ip_addr (str): The hostname or IP address of the router/core switch
 
         Returns:
             defaultdict: The parsed output of the show ip arp command
@@ -114,7 +113,7 @@ class GetTables:
             the output
 
         Args:
-            switches (list):
+            switch_ip (str):
                 A list of the top of rack switches to in order to retrieve
                 the mac-address tables
 

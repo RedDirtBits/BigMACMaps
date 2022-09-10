@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from netmiko import ConnLogOnly
 
+
 class SSHClient:
     """
      SSHClient summary:
@@ -38,12 +39,13 @@ class SSHClient:
 
         self.hostname = hostname
         self.profile = profile
-        self.plaform = platform
+        self.platform = platform
+        self.session = None
 
         load_dotenv()
 
         self.ssh_profile = {
-            "device_type": self.plaform,
+            "device_type": self.platform,
             "host": self.hostname,
             "username": os.environ.get(f"{self.profile}_username"),
             "password": os.environ.get(f"{self.profile}_password"),
@@ -73,7 +75,7 @@ class SSHClient:
             sys.exit(f"Unable To Log in to: {self.hostname}")
 
         # in most cases, particularly in cases using TACACS, we will be dropped into
-        # priviledged EXEC mode on the device.  However, as a sanity check, let's make
+        # privileged EXEC mode on the device.  However, as a sanity check, let's make
         # sure and if not run enable to get there
         if not self.session.check_enable_mode():
             self.session.enable()

@@ -1,5 +1,6 @@
 import re
 
+
 class IOSRexPatterns:
     """
      Regular Expression patterns for extracting values in the Cisco commands
