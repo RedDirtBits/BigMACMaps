@@ -59,9 +59,3 @@ with open("port_maps.csv", "a") as csvfile:
                         "interface": mac_table[tables.switch_hostname][mac_key]["interface"],
                         "vlan": mac_table[tables.switch_hostname][mac_key]["vlan"]
                     })
-
-
-
-
-
-
