@@ -6,7 +6,7 @@ coresw_ip = "192.168.1.1"
 tor_switches = ["192.168.2.1", "192.168.2.2", "192.168.2.3", "192.168.2.4"]
 
 # Initialize the class that handles running the commands.  The class
-# initializes the SSH connections so we pass in the required parameters
+# initializes the SSH connections, so we pass in the required parameters
 # here
 tables = GetTables(platform="cisco_ios", profile="gns3")
 
