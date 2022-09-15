@@ -73,6 +73,9 @@ class SSHClient:
         # handler if this is encountered
         if self.session is None:
             sys.exit(f"Unable To Log in to: {self.hostname}")
+        else:
+            # if the connection is good, grab the name of the device from the command prompt
+            self.device_hostname = self.session.find_prompt()[:-1]
 
         # in most cases, particularly in cases using TACACS, we will be dropped into
         # privileged EXEC mode on the device.  However, as a sanity check, let's make
