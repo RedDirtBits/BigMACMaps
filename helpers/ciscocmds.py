@@ -32,3 +32,11 @@ class CiscoCommands:
     @staticmethod
     def show_macs():
         return "show mac address-table"
+
+    @staticmethod
+    def cdp_neighbors():
+        return "show cdp neighbors"
+
+    @staticmethod
+    def lldp_neighbors():
+        return "show lldp neighbors"
