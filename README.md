@@ -14,16 +14,6 @@ There was no option of being able to run Ansible (again, situations, circumstanc
 
 Of equal consideration, for me at least, was the thought this may actually be useful for someone else.  So an overlay goal was to _try_ to write all this in a manner that would not only be re-useable for myself, but perhaps by some glimmer of light, someone else too.  In the world of DevOps and Network Automation, at least in my perception, they have in many ways left "boots on the ground" behind.  Meaning, that many of the automations out there don't seem to have the one that is hands on with the equipment, plugging into console ports, etc. in mind.  So my hope was that if there be some other poor soul facing a similar situation this application might help.
 
-## The Result
-
-What you will find here is the result of my efforts.  I don't claim that it is the best way, the most effient way or any other such notion, but it does work.  I have already run this in a production environment and produced a report that saved, at least myself, an enormous amount of time.
-
-As with all the code I have uploaded to GitHub, I do so in the hope that if someone comes across it, and sees something that could be done better, that they let me know.  I know I would love to write some unit tests for this but I have not really had need to ever before as what code I write is generally for personal use.
-
-There is more that needs to be added to this README around what to expect when using the program, perhaps a bit around how it's used, etc.  One thing I particularly focused on was writing this in such a way that it could be just as easily used in different environments such as a personal lab, GNS3 and, of course, a production environment.  if nothing else, I think I accomplished that.
-
-I ran into a few issues using TextFSM for parsing the tables.  As a result, I ended up relying heavily on some classes I took around Regular Expressions and wrote my own parser for the arp and mac tables.  That was fun.  Really.  No, really!  I am going to have to find some more use cases for such a thing.
-
 ## Usage
 
 All one needs to do is provide the IP addresses in `mac_maps.py` and run.  The variables `coresw_ip` and `tor_switches` hold these values.  Once the script has been run, it will return a CSV file with the mappings named `port_maps.csv`.  Any IP address on the core device that is found on the ToR switch will be added.  In addition to this, the variable `excluded_ports` should be populated with a list of trunk port links to filter out duplication.  Each entry in the string should be separated by a space and should be entered exactly how it appears in the _Ports_ column of the mac address table, i.e. `Gi0/0` and not `GigabitEthernet 0/0`, etc.
@@ -56,5 +46,13 @@ I have tried to document/comment the code as much as possible, probably to the p
 To date it has been tested only on the Cisco Nexus and IOS platforms.
 
 ## Conclusion
+
+What you will find here is the result of my efforts.  I don't claim that it is the best way, the most effient way or any other such notion, but it does work.  I have already run this in a production environment and produced a report that saved, at least myself, an enormous amount of time.
+
+As with all the code I have uploaded to GitHub, I do so in the hope that if someone comes across it, and sees something that could be done better, that they let me know.  I know I would love to write some unit tests for this but I have not really had need to ever before as what code I write is generally for personal use.
+
+One thing I particularly focused on was writing this in such a way that it could be just as easily used in different environments such as a personal lab, GNS3 and, of course, a production environment.  if nothing else, I think I accomplished that.
+
+I ran into a few issues using TextFSM for parsing the tables.  As a result, I ended up relying heavily on some classes I took around Regular Expressions and wrote my own parser for the arp and mac tables.  That was fun.  Really.  No, really!  I am going to have to find some more use cases for such a thing.
 
 This still needs work, and I will probably keep picking at it as I get to use it more to try and improve it as much as my Python skills will allow.  If you happen to use this and find it useful, please, I would greatly appreciate you letting me know.  If you find it as the worse code you have ever seen written, truthfully, I would love to know that too.
