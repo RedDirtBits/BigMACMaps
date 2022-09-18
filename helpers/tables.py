@@ -36,10 +36,10 @@ class GetTables:
             Telnet, etc.
     """
 
-    def __init__(self, platform: str, profile: str) -> None:
+    def __init__(self, platform_id: str, credential_id: str) -> None:
 
-        self.platform = platform
-        self.profile = profile
+        self.platform_id = platform_id
+        self.credential_id = credential_id
 
         self.cmds = CiscoCommands()
         self.regexes = IOSRexPatterns()
@@ -58,7 +58,7 @@ class GetTables:
         """
 
         # initialize the SSH client
-        ssh_client = SSHClient(hostname=ip_addr, platform=self.platform, profile=self.profile)
+        ssh_client = SSHClient(hostname=ip_addr, platform_id=self.platform_id, credential_id=self.credential_id)
 
         # log into the router
         ssh_client.ssh_host_login()
@@ -122,7 +122,7 @@ class GetTables:
         """
 
         # initialize the SSH client
-        ssh_client = SSHClient(hostname=switch_ip, platform=self.platform, profile=self.profile)
+        ssh_client = SSHClient(hostname=switch_ip, platform_id=self.platform_id, credential_id=self.credential_id)
 
         # log into the router
         ssh_client.ssh_host_login()
@@ -165,10 +165,3 @@ class GetTables:
 
         return mac_result
 
-
-# router = "192.168.1.1"
-# tables = GetTables(platform="cisco_ios", profile="gns3")
-# print(tables.parse_arp_table(ip_addr=router))
-
-# switches = ["192.168.2.1", "192.168.2.2"]
-# print(tables.parse_mac_table(switches=switches))

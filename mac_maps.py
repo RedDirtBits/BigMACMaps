@@ -8,7 +8,7 @@ tor_switches = ["192.168.2.1", "192.168.2.2", "192.168.2.3", "192.168.2.4"]
 # Initialize the class that handles running the commands.  The class
 # initializes the SSH connections, so we pass in the required parameters
 # here
-tables = GetTables(platform="cisco_ios", profile="gns3")
+tables = GetTables(platform_id="cisco_ios", credential_id="gns3")
 
 # We only need to run the show ip arp command once.  Do that and store
 # the result in a variable for later use
